@@ -1,0 +1,24 @@
+{
+  "name": "Multicurrency Example",
+  "description": "Multicurrency Example",
+  "uid": "shuttle_bus_quotes_app",
+  "scopes": [
+    "crm.objects.deals.read",
+    "crm.objects.deals.write",
+    "e-commerce",
+    "crm.objects.quotes.read",
+    "crm.objects.quotes.write",
+    "collector.graphql_query.execute",
+    "collector.graphql_schema.read"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/shuttle-bus-quotes.json"
+        }
+      ]
+    }
+  }
+}
