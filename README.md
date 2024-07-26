@@ -1,39 +1,38 @@
-# Shuttle bus quotes sample
+**Note: this extension is in a rough draft state**
 
-This example uses a fictitious Shuttle Bus Rental Service. The sample allows a salesperson to quickly determine which of the company’s services match the customer’s requirements. This example uses HubSpot quotes, but it adds a custom UI inside the CRM so that users can quickly and intuitively create specialized quotes with a lower margin for error than using the full featured quote tool.
+# Multicurrency line items sample
 
-We recommend installing this sample in a Sandbox account.
+![Screenshot 2024-07-26 at 10 26 12](https://github.com/user-attachments/assets/24e3b774-9070-457a-ae06-9a825663598a)
 
-## Quick Start
+Summary: a HubSpot UI extension that allows users to add line items in multiple currencies to one deal. Natively, line items are restricted to the currency of the deal. However, we can expose the default currency of each line item, add the line items in the portal default currency (e.g. USD), but still view and report on the line item currency (e.g. EUR)
 
-### Step 1: Update your CLI and & authenticate your account
+In this scenario, I have three line items with this information stored on them:
 
-1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
-1. Run `hs init` if you haven’t already done so to create a config file for your parent account.
-1. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
-
-### Step 2: Import sample products
-
-[Import](https://knowledge.hubspot.com/crm-setup/import-objects) sample [products](./products.csv) into your HubSpot account:
-
-1. Inside your HubSpot account, click the settings gear icon.
-1. In the left sidebar menu under `Data Management`, choose `Import & Export`.
-1. Click the `Go to import` button, then on the following screen click `Start an import`.
-1. Choose `Import file from computer`, then `one file`, then `one object`, then select the `Products`.
-1. Select the [products.csv](./products.csv) file in this project and click `Next` and then `Finish` to finish the import.
-
-### Step 3: Install dependencies
-
-In the CLI, run `npm install` to install the dependencies for this project.
-
-### Step 4: Upload project
-
-Run `hs project upload`. Alternatively, if you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
-
-### Step 5: Create a deal and view the card
-
-HubSpot quotes are always associated with a deal record to track the progress of the quote. If you don’t have any deals in the account you’re using to view this sample, create a deal now.
-
-1. In the main menu, select `Sales` > `Deals`.
-1. Click `Create deal` in the top right hand corner and fill in all required fields. Click `create` once you’ve finished filling in your deal details.
-1. Your new deal should appear in the `Deals table`. Select it and navigate to the `custom tab` in the middle pane to access the Shuttle bus quotes.
+```
+[
+  {
+    name: 'German Consulting',
+    hs_sku: 'germany',
+    hs_price_eur: '400',
+    hs_price_usd: '430',
+    hs_object_id: 2514207643,
+    default_currency: { label: 'EUR', value: 'hs_price_eur' }
+  },
+  {
+    name: 'U.S. Consulting',
+    hs_sku: 'usa',
+    hs_price_eur: null,
+    hs_price_usd: '500',
+    hs_object_id: 2514207645,
+    default_currency: { label: 'USD', value: 'hs_price_usd' }
+  },
+  {
+    name: 'French Consulting',
+    hs_sku: null,
+    hs_price_eur: '400',
+    hs_price_usd: '460',
+    hs_object_id: 2514848429,
+    default_currency: { label: 'EUR', value: 'hs_price_eur' }
+  }
+]
+```
